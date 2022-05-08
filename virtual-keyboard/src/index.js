@@ -25,7 +25,7 @@ keys.forEach((item) => { item.addEventListener('mousedown', (changeButtonDown)) 
 keys.forEach((item) => { item.addEventListener('mouseup', (changeButtonUp)) });
 keys.forEach((item) => { item.addEventListener('mouseout', (changeButtonUp)) });
 
-//document.body.innerHTML = '';
+//firstFillKeys
 
 const rows = document.querySelectorAll('.row');
 
@@ -55,5 +55,17 @@ firstFillKeys();
 const capsK = document.querySelector('.CapsLock');
 const shiftK = document.querySelector('.ShiftLeft');
 const altK = document.querySelector('.AltLeft');
+const langK = document.querySelector('.Lang');
+
+//change lang
+
+function changeLang() {
+   (lang === 'en') ? lang = 'ru' : lang = 'en';
+   firstFillKeys();
+}
+
+langK.addEventListener('click', changeLang);
+
+
 
 console.log(rows[4].children);
