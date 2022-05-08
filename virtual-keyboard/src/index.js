@@ -4,14 +4,25 @@ import dataButtons from './js/dataButtons.js';
 
 createPageLayout();
 createKeyboard();
-/*
+
+//buttons animation
+
 const keys = document.querySelectorAll('.key');
 
-function changeButton() {
-   keys.classList.add('active');
+function changeButtonDown(event) {
+   if (event.target.classList.contains('key')) {
+      event.target.classList.add('active');
+   }
 }
 
-keys.addEventListener('click', changeButton);
-*/
+function changeButtonUp(event) {
+   if (event.target.classList.contains('active')) {
+      event.target.classList.remove('active');
+   }
+}
+
+keys.forEach((item) => { item.addEventListener('mousedown', (changeButtonDown)) });
+keys.forEach((item) => { item.addEventListener('mouseup', (changeButtonUp)) });
+keys.forEach((item) => { item.addEventListener('mouseout', (changeButtonUp)) });
 
 //document.body.innerHTML = '';
