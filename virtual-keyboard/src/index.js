@@ -26,3 +26,34 @@ keys.forEach((item) => { item.addEventListener('mouseup', (changeButtonUp)) });
 keys.forEach((item) => { item.addEventListener('mouseout', (changeButtonUp)) });
 
 //document.body.innerHTML = '';
+
+const rows = document.querySelectorAll('.row');
+
+
+let lang = 'en';
+
+function firstFillKeys() {
+   if (lang === 'en') {
+      for (let i = 0; i < rows.length; i++) {
+         for (let j = 0; j < rows[i].children.length; j++) {
+            rows[i].children[j].innerHTML = dataButtons[i][j].key.en;
+            rows[i].children[j].classList.add(dataButtons[i][j].class);
+         }
+      }
+   } else {
+      for (let i = 0; i < rows.length; i++) {
+         for (let j = 0; j < rows[i].children.length; j++) {
+            rows[i].children[j].innerHTML = dataButtons[i][j].key.ru;
+            rows[i].children[j].classList.add(dataButtons[i][j].class);
+         }
+      }
+   }
+}
+
+firstFillKeys();
+
+const capsK = document.querySelector('.CapsLock');
+const shiftK = document.querySelector('.ShiftLeft');
+const altK = document.querySelector('.AltLeft');
+
+console.log(rows[4].children);

@@ -130,8 +130,12 @@ body {
   background: #1e1e1e;
 }
 
+.row:first-child .key:first-child {
+  width: 91px;
+}
+
 .row:first-child .key:last-child {
-  width: 116px;
+  width: 167px;
 }
 
 .row:nth-child(2) .key:first-child {
@@ -143,11 +147,11 @@ body {
 }
 
 .row:nth-child(3) .key:first-child {
-  width: 116px;
+  width: 136px;
 }
 
 .row:nth-child(3) .key:last-child {
-  width: 142px;
+  width: 198px;
 }
 
 .row:nth-child(4) .key:first-child {

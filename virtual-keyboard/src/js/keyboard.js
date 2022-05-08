@@ -1,7 +1,7 @@
 export function createKeyboard() {
    const keyboard = document.querySelector(".keyboard");
 
-   const rowArr = [15, 15, 14, 13, 9]
+   const rowArr = [14, 15, 13, 13, 9]
 
    for (let i = 0; i < rowArr.length; i++) {
       const row = document.createElement('div');

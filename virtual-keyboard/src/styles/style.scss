@@ -79,8 +79,12 @@ body {
 }
 
 .row:first-child {
+   .key:first-child {
+      width: 91px;
+   }
+
    .key:last-child {
-      width: 116px;
+      width: 167px;
    }
 }
 
@@ -96,11 +100,11 @@ body {
 
 .row:nth-child(3) {
    .key:first-child {
-      width: 116px;
+      width: 136px;
    }
 
    .key:last-child {
-      width: 142px;
+      width: 198px;
    }
 }
 
