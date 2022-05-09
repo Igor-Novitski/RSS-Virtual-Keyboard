@@ -1,0 +1,28 @@
+{
+  "name": "rss-virtual-keyboard",
+  "version": "1.0.0",
+  "description": "RS school project",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Igor-Novitski/RSS-Virtual-Keyboard.git"
+  },
+  "author": "Ihar Navitski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Igor-Novitski/RSS-Virtual-Keyboard/issues"
+  },
+  "homepage": "https://github.com/Igor-Novitski/RSS-Virtual-Keyboard#readme",
+  "dependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "sass": "^6.14.13"
+  }
+}
