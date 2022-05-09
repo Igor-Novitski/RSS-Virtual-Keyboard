@@ -181,7 +181,7 @@ const dataButtons = [
       },
       { key: { ru: ' ', en: ' ' }, code: 'Space', class: 'Space' },
       {
-         key: { ru: 'Alt', en: 'Alt' }, code: 'AltRight', class: 'AltRight',
+         key: { ru: 'AltGr', en: 'AltGr' }, code: 'AltRight', class: 'AltRight',
       },
       {
          key: { ru: 'Cntrl', en: 'Cntrl' }, code: 'ControlRight', class: 'ControlRight',

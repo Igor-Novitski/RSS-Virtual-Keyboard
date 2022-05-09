@@ -147,9 +147,9 @@ function changeShiftByClick() {
 }
 
 //write
-/*
-const display = document.querySelector('.display');
 
+const display = document.querySelector('.display');
+/*
 keys.forEach((k) => {
    k.addEventListener('click', write);
    function write(event) {
@@ -157,9 +157,9 @@ keys.forEach((k) => {
    }
 });*/
 
-//physical keyboard keys animation
+//physical keyboard keys animation and functional
 
-//changeButtonDown(event)
+
 
 let codeArr = [];
 
@@ -173,6 +173,15 @@ document.addEventListener('keydown', (event) => {
    if (codeArr.includes(event.code)) {
       document.querySelector(`.${event.code}`).classList.add('active');
    }
+   if (shiftKl.classList.contains('active') && altK.classList.contains('active')) {
+      changeLang();
+   }
+   if (event.key === 'Alt' || event.key === 'AltGr') {
+      event.preventDefault();
+   } else if (event.key === 'Tab') {
+      event.preventDefault();
+   }
+   display.focus();
 });
 
 document.addEventListener('keyup', (event) => {
@@ -180,3 +189,4 @@ document.addEventListener('keyup', (event) => {
       document.querySelector(`.${event.code}`).classList.remove('active');
    }
 });
+display.focus();
