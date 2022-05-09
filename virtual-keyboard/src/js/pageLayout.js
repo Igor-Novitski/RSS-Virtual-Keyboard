@@ -16,7 +16,7 @@ export function createPageLayout() {
    container.append(keyboard);
 
    const footer = document.createElement('p');
-   footer.innerHTML = `🛈 To change the language press "ALT + SHIFT"(left) combination or special button "en/ru".<br/>
+   footer.innerHTML = `🛈 To change the language press "Cntrl + Alt"(left) combination or special button "en/ru".<br/>
          Only for Windows system.`;
    container.append(footer);
 }

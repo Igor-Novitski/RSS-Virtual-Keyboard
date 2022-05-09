@@ -54,6 +54,7 @@ firstFillKeys();
 const capsK = document.querySelector('.CapsLock');
 const shiftKr = document.querySelector('.ShiftRight');
 const shiftKl = document.querySelector('.ShiftLeft');
+const ctrlKl = document.querySelector('.ControlLeft');
 const altK = document.querySelector('.AltLeft');
 const langK = document.querySelector('.Lang');
 
@@ -146,20 +147,9 @@ function changeShiftByClick() {
    }
 }
 
-//write
-
-const display = document.querySelector('.display');
-/*
-keys.forEach((k) => {
-   k.addEventListener('click', write);
-   function write(event) {
-      display.textContent += event.target.innerHTML;
-   }
-});*/
-
 //physical keyboard keys animation and functional
 
-
+const display = document.querySelector('.display');
 
 let codeArr = [];
 
@@ -173,13 +163,20 @@ document.addEventListener('keydown', (event) => {
    if (codeArr.includes(event.code)) {
       document.querySelector(`.${event.code}`).classList.add('active');
    }
-   if (shiftKl.classList.contains('active') && altK.classList.contains('active')) {
+   if (ctrlKl.classList.contains('active') && altK.classList.contains('active')) {
       changeLang();
    }
    if (event.key === 'Alt' || event.key === 'AltGr') {
       event.preventDefault();
-   } else if (event.key === 'Tab') {
+   }
+   if (event.key === 'Tab') {
       event.preventDefault();
+   }
+   if (event.code === 'CapsLock') {
+      changeCaps();
+   }
+   if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      changeShift();
    }
    display.focus();
 });
@@ -188,5 +185,21 @@ document.addEventListener('keyup', (event) => {
    if (codeArr.includes(event.code)) {
       document.querySelector(`.${event.code}`).classList.remove('active');
    }
+   if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      changeShift();
+   }
 });
 display.focus();
+
+
+//write by virtual keyboard
+
+
+keys.forEach((k) => {
+   k.addEventListener('click', write);
+   function write(event) {
+      display.focus();
+
+      display.textContent += event.target.textContent;
+   }
+});
