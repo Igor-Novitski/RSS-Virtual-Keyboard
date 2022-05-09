@@ -196,7 +196,7 @@ const dataButtons = [
          key: { ru: '→', en: '→' }, code: 'ArrowRight', noType: true, class: 'ArrowRight',
       },
       {
-         key: { ru: '🇷🇺', en: 'en' }, code: 'Lang', class: 'Lang',
+         key: { ru: 'en/🇷🇺', en: 'en/ru' }, code: 'Lang', class: 'Lang',
       },
    ],
 ];
