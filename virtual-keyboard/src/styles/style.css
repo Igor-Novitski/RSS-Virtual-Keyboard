@@ -134,6 +134,10 @@ body {
   color: red;
 }
 
+textarea:focus {
+  outline: none;
+}
+
 .row:first-child .key:first-child {
   width: 91px;
 }

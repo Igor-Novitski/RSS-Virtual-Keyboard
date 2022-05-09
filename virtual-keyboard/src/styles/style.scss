@@ -79,7 +79,11 @@ body {
 }
 
 .red {
-   color:red;
+   color: red;
+}
+
+textarea:focus {
+   outline: none;
 }
 
 .row:first-child {

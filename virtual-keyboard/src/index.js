@@ -121,7 +121,7 @@ shiftKl.addEventListener('click', (changeShift));
 function changeShiftByClick() {
    if (!capsK.classList.contains('down')) {
       if (shiftKl.classList.contains('down')) {
-         for (let i = 0; i < 5; i++) {
+         for (let i = 0; i < rows.length; i++) {
             for (let j = 0; j < rows[i].children.length; j++) {
                if (dataButtons[i][j].shift) {
                   rows[i].children[j].innerHTML = dataButtons[i][j].shift[localStorage.lang];
@@ -133,7 +133,7 @@ function changeShiftByClick() {
       }
    } else {
       if (shiftKl.classList.contains('down')) {
-         for (let i = 0; i < 5; i++) {
+         for (let i = 0; i < rows.length; i++) {
             for (let j = 0; j < rows[i].children.length; j++) {
                if (dataButtons[i][j].shift && rows[i].children[j].textContent.length === 1) {
                   rows[i].children[j].innerHTML = dataButtons[i][j].shift[localStorage.lang].toLowerCase();
@@ -146,3 +146,37 @@ function changeShiftByClick() {
    }
 }
 
+//write
+/*
+const display = document.querySelector('.display');
+
+keys.forEach((k) => {
+   k.addEventListener('click', write);
+   function write(event) {
+      display.textContent += event.target.innerHTML;
+   }
+});*/
+
+//physical keyboard keys animation
+
+//changeButtonDown(event)
+
+let codeArr = [];
+
+for (let i = 0; i < 5; i++) {
+   for (let j = 0; j < rows[i].children.length; j++) {
+      if (dataButtons[i][j].code) codeArr.push(dataButtons[i][j].code);
+   }
+}
+
+document.addEventListener('keydown', (event) => {
+   if (codeArr.includes(event.code)) {
+      document.querySelector(`.${event.code}`).classList.add('active');
+   }
+});
+
+document.addEventListener('keyup', (event) => {
+   if (codeArr.includes(event.code)) {
+      document.querySelector(`.${event.code}`).classList.remove('active');
+   }
+});
