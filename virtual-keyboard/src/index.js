@@ -160,6 +160,8 @@ shiftKl.addEventListener('click', (changeShift));
 const display = document.querySelector('.display');
 
 const codeArr = [];
+let cursor;
+let text;
 
 for (let i = 0; i < 5; i += 1) {
   for (let j = 0; j < rows[i].children.length; j += 1) {
@@ -168,8 +170,18 @@ for (let i = 0; i < 5; i += 1) {
 }
 
 document.addEventListener('keydown', (event) => {
+  cursor = display.selectionStart;
   if (codeArr.includes(event.code)) {
     document.querySelector(`.${event.code}`).classList.add('active');
+    if (document.querySelector(`.${event.code}`).textContent.length === 1 && !['ArrowLeft', 'ArrowDown', 'ArrowRight', 'ArrowUp', 'Space'].includes(event.code)) {
+      event.preventDefault();
+      text = [...display.value];
+      text.splice(cursor, 0, document.querySelector(`.${event.code}`).textContent);
+      text = text.join('');
+      display.value = text;
+      cursor += 1;
+      display.setSelectionRange(cursor, cursor);
+    }
   }
   if (ctrlKl.classList.contains('active') && altK.classList.contains('active')) {
     changeLang();
@@ -179,7 +191,12 @@ document.addEventListener('keydown', (event) => {
   }
   if (event.key === 'Tab') {
     event.preventDefault();
-    display.value += '    ';
+    text = [...display.value];
+    text.splice(cursor, 0, '    ');
+    text = text.join('');
+    display.value = text;
+    cursor += 4;
+    display.setSelectionRange(cursor, cursor);
   }
   if (event.code === 'CapsLock') {
     changeCaps();
@@ -202,35 +219,48 @@ display.focus();
 
 // write by virtual keyboard
 
-let cursor;
-let text;
-
 function writeByClick(event) {
   cursor = display.selectionStart;
   display.focus();
   if (event.target.textContent.length === 1) {
-    display.value += event.target.textContent;
+    text = [...display.value];
+    text.splice(cursor, 0, event.target.textContent);
+    text = text.join('');
+    display.value = text;
+    cursor += 1;
+    display.setSelectionRange(cursor, cursor);
   }
   if (event.target.textContent === 'Tab') {
     text = [...display.value];
     text.splice(cursor, 0, '    ');
     text = text.join('');
     display.value = text;
+    cursor += 4;
+    display.setSelectionRange(cursor, cursor);
   }
   if (event.target.textContent === 'Enter') {
     text = [...display.value];
     text.splice(cursor, 0, '\n');
     text = text.join('');
     display.value = text;
+    cursor += 1;
+    display.setSelectionRange(cursor, cursor);
   }
   if (event.target.textContent === 'Backspace') {
     text = [...display.value];
-    text.pop();
+    text.splice((cursor - 1), 1);
+    cursor -= 1;
     text = text.join('');
     display.value = text;
+    display.setSelectionRange(cursor, cursor);
+  }
+  if (event.target.textContent === 'Del') {
+    text = [...display.value];
+    text.splice(cursor, 1);
+    text = text.join('');
+    display.value = text;
+    display.setSelectionRange(cursor, cursor);
   }
 }
 
 keys.forEach((k) => { k.addEventListener('click', writeByClick); });
-
-console.log('Уважаемый проверяющий, в случае обнаружения каких-либо ошибок или недочетов, готов все исправить в кратчайшее время, поэтому прошу Вас оставлять ваши даннные');
